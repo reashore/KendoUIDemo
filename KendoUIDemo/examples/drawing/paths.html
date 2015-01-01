@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <title>Manipulating Paths</title>
@@ -73,26 +73,26 @@
 
     var path = renderPath();
     $("#surface-container")
-        .on("mousemove", function(e) {
-            var offset = $(this).offset();
-            path.segments[0].anchor().move(e.pageX - offset.left, e.pageY - offset.top);
+	    .on("mousemove", function (e) {
+	    	var offset = $(this).offset();
+	    	path.segments[0].anchor().move(e.pageX - offset.left, e.pageY - offset.top);
 
-            for (var i = 0; i < points - 1; i++) {
-                var point = path.segments[i].anchor();
-                var nextPoint = path.segments[i + 1].anchor();
+	    	for (var i = 0; i < points - 1; i++) {
+	    		var point = path.segments[i].anchor();
+	    		var nextPoint = path.segments[i + 1].anchor();
 
-                var vector = point.clone().translate(-nextPoint.x, -nextPoint.y);
-                vector.scale(distance / vector.distanceTo(Point.ZERO));
+	    		var vector = point.clone().translate(-nextPoint.x, -nextPoint.y);
+	    		vector.scale(distance / vector.distanceTo(Point.ZERO));
 
-                nextPoint.move(point.x - vector.x, point.y - vector.y);
-            }
-        })
-        .on("mousedown", function(e) {
-            path.options.stroke.set("width", 2);
-        })
-        .on("mouseup", function(e) {
-            path.options.stroke.set("width", 20);
-        })
+	    		nextPoint.move(point.x - vector.x, point.y - vector.y);
+	    	}
+	    })
+	    .on("mousedown", function (e) {
+	    	path.options.stroke.set("width", 2);
+	    })
+	    .on("mouseup", function (e) {
+	    	path.options.stroke.set("width", 20);
+	    });
 
     $(document).ready(function() {
         var surface = initSurface();

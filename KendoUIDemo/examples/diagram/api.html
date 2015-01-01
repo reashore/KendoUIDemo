@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <title>API</title>
@@ -111,7 +111,7 @@
 
         $(document).ready(function () {
             createDiagram();
-            var Point = kendo.dataviz.diagram.Point;
+            var point = kendo.dataviz.diagram.Point;
             var diagram = $("#diagram").data("kendoDiagram");
 
             var viewModel = kendo.observable({
@@ -145,7 +145,7 @@
                     diagram.zoom(this.get("zoom"));
                 },
                 pan: function () {
-                    diagram.pan(new Point(this.get("panX"), this.get("panY")));
+                    diagram.pan(new point(this.get("panX"), this.get("panY")));
                 }
             });
 
